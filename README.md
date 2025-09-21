@@ -40,6 +40,19 @@ spring.datasource.password=demo_pass
 spring.jpa.generate-ddl=true
 spring.jpa.hibernate.ddl-auto=create
 
+## ⚙️ Configuration
+
+```properties
+spring.jpa.database=POSTGRESQL
+spring.jpa.show-sql=true
+
+spring.datasource.url=jdbc:postgresql://localhost:5431/demo
+spring.datasource.username=demo_user
+spring.datasource.password=demo_pass
+
+spring.jpa.generate-ddl=true
+spring.jpa.hibernate.ddl-auto=create
+
 ## 📚 API Endpoints
 
 ### Articles
