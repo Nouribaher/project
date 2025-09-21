@@ -29,66 +29,25 @@ A backend RESTful API for a developer news platform built with **Spring Boot**, 
 
 Update `src/main/resources/application.properties`:
 
-```properties
-spring.jpa.database=POSTGRESQL
-spring.jpa.show-sql=true
+## 🔐 Advanced Configuration
 
-spring.datasource.url=jdbc:postgresql://localhost:5431/demo
-spring.datasource.username=demo_user
-spring.datasource.password=demo_pass
+This project includes performance tuning, secure authentication, and relational modeling for a scalable backend system.
 
-spring.jpa.generate-ddl=true
-spring.jpa.hibernate.ddl-auto=create
-
-## ⚙️ Configuration
+### ⚙️ `application.properties`
 
 ```properties
-spring.jpa.database=POSTGRESQL
+spring.datasource.url=jdbc:postgresql://localhost:5432/devnews
+spring.datasource.username=postgres
+spring.datasource.password=admin
+
+spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
-
-spring.datasource.url=jdbc:postgresql://localhost:5431/demo
-spring.datasource.username=demo_user
-spring.datasource.password=demo_pass
-
-spring.jpa.generate-ddl=true
-spring.jpa.hibernate.ddl-auto=create
-
-## 📚 API Endpoints
-
-### Articles
-
-| Method | Path | Description |
-|--------|------|-------------|
-| GET    | `/articles` | Get all articles |
-| GET    | `/articles/{id}` | Get article by ID |
-| POST   | `/articles` | Create new article |
-| PUT    | `/articles/{id}` | Update article |
-| DELETE | `/articles/{id}` | Delete article |
-
-### Comments
-
-| Method | Path | Description |
-|--------|------|-------------|
-| GET    | `/articles/{articleId}/comments` | Get comments for article |
-| GET    | `/comments?authorName={name}` | Get comments by author |
-| POST   | `/articles/{articleId}/comments` | Add comment to article |
-| PUT    | `/comments/{id}` | Update comment |
-| DELETE | `/comments/{id}` | Delete comment |
-
-### Topics
-
-| Method | Path | Description |
-|--------|------|-------------|
-| GET    | `/topics` | Get all topics |
-| GET    | `/articles/{id}/topics` | Get topics for article |
-| POST   | `/topics` | Create topic |
-| POST   | `/articles/{id}/topics` | Add topic to article |
-| PUT    | `/topics/{id}` | Update topic |
-| DELETE | `/topics/{id}` | Delete topic |
-| DELETE | `/articles/{id}/topics/{topicId}` | Remove topic from article |
-| GET    | `/topics/{id}/articles` | Get articles by topic |
-
-### Reactions (Bonus)
-
-Design your own model to support likes/dislikes on articles and comments.
-Added API Endpoints section to README
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+spring.jpa.properties.hibernate.id.new_generator_mappings=false
+spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true
+spring.jpa.properties.hibernate.default_batch_fetch_size=100
+spring.jpa.properties.hibernate.order_inserts=true
+spring.jpa.properties.hibernate.order_updates=true
+spring.jpa.properties.hibernate.jdbc.batch_size=100
