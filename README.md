@@ -98,19 +98,25 @@ spring.jpa.hibernate.ddl-auto=create
 
 ## 🗃️ SQL Schema & Sample Data
 ### Create tables
+```
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL
 );
+```
 
-### CREATE TABLE topics 
+### CREATE TABLE topics
+```
 (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL
 );'
 
+```
+
 ### CREATE TABLE articles
+```
 (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
@@ -119,7 +125,9 @@ CREATE TABLE users (
   topic_id INTEGER REFERENCES topics(id)
 );
 
+```
 ### CREATE TABLE comments 
+```
 (
   id SERIAL PRIMARY KEY,
   content TEXT NOT NULL,
@@ -127,8 +135,9 @@ CREATE TABLE users (
   user_id INTEGER REFERENCES users(id)
 );
 
+```
 ### Insert sample data
-
+```
 INSERT INTO users (username, password) VALUES ('john', 'password123');
 INSERT INTO users (username, password) VALUES ('jane', 'password456');
 
@@ -140,6 +149,8 @@ INSERT INTO articles (title, content, user_id, topic_id) VALUES ('Spring Boot Ba
 
 INSERT INTO comments (content, article_id, user_id) VALUES ('Great article!', 1, 2);
 INSERT INTO comments (content, article_id, user_id) VALUES ('Very helpful, thanks!', 2, 1);
+
+```
 
 #### Exercise 1
 Create an Article model and implement the above API.
