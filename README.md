@@ -91,3 +91,5 @@ INSERT INTO articles (title, content, user_id, topic_id) VALUES ('Spring Boot Ba
 
 INSERT INTO comments (content, article_id, user_id) VALUES ('Great article!', 1, 2);
 INSERT INTO comments (content, article_id, user_id) VALUES ('Very helpful, thanks!', 2, 1);
+
+
