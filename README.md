@@ -51,3 +51,43 @@ spring.jpa.properties.hibernate.default_batch_fetch_size=100
 spring.jpa.properties.hibernate.order_inserts=true
 spring.jpa.properties.hibernate.order_updates=true
 spring.jpa.properties.hibernate.jdbc.batch_size=100
+
+-- Create tables
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE topics (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE articles (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  content TEXT NOT NULL,
+  user_id INTEGER REFERENCES users(id),
+  topic_id INTEGER REFERENCES topics(id)
+);
+
+CREATE TABLE comments (
+  id SERIAL PRIMARY KEY,
+  content TEXT NOT NULL,
+  article_id INTEGER REFERENCES articles(id),
+  user_id INTEGER REFERENCES users(id)
+);
+
+-- Insert sample data
+INSERT INTO users (username, password) VALUES ('john', 'password123');
+INSERT INTO users (username, password) VALUES ('jane', 'password456');
+
+INSERT INTO topics (name) VALUES ('Java');
+INSERT INTO topics (name) VALUES ('Spring Boot');
+
+INSERT INTO articles (title, content, user_id, topic_id) VALUES ('Intro to Java', 'Java is a programming language...', 1, 1);
+INSERT INTO articles (title, content, user_id, topic_id) VALUES ('Spring Boot Basics', 'Spring Boot makes it easy...', 2, 2);
+
+INSERT INTO comments (content, article_id, user_id) VALUES ('Great article!', 1, 2);
+INSERT INTO comments (content, article_id, user_id) VALUES ('Very helpful, thanks!', 2, 1);
