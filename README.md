@@ -39,6 +39,7 @@ spring.datasource.password=demo_pass
 
 spring.jpa.generate-ddl=true
 spring.jpa.hibernate.ddl-auto=create
+
 ## 📚 API Endpoints
 
 ### Articles
@@ -77,3 +78,4 @@ spring.jpa.hibernate.ddl-auto=create
 ### Reactions (Bonus)
 
 Design your own model to support likes/dislikes on articles and comments.
+Added API Endpoints section to README
